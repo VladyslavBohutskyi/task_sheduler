@@ -1,29 +1,59 @@
 import React from 'react';
 import {
   Grid,
-  ThemeProvider
+  ThemeProvider,
+  Box
 } from '@mui/material';
-import customTheme from './themes/theme';
-import { indigo } from '@mui/material/colors';
+import purpleTheme from './themes/theme';
 import Sidebar from './modules/sidebar';
 import Dashboard from './modules/dashboard';
 
 
 function App() {
   return (
-    <ThemeProvider theme={customTheme}>
-      <Grid
-        container
-        bgcolor={indigo[300]}
+    <ThemeProvider theme={purpleTheme}>
+      <Box
+        p={'3%'}
         minHeight={'100vh'}
+        bgcolor={'background.paper'}
+        display={'flex'}
       >
-        <Grid item xs={12} sm={4} md={3} lg={2}>
-          <Sidebar />
+        <Grid container
+          minHeight={'800px'}
+          maxWidth={'1600px'}
+          m={'auto'}
+          overflow={'hidden'}
+          bgcolor={'primary.main'}
+          p={1}
+          borderRadius={8}
+        >
+          <Grid item xs={12} sm={4} md={3} lg={2}
+            p={5}
+            pt={4}
+            bgcolor={'primary.main'}
+          >
+            <Sidebar />
+          </Grid>
+          <Grid item xs={12} sm={8} md={9} lg={10}
+            p={5}
+            pt={4}
+            bgcolor={'background.default'}
+            borderRadius={8}
+          >
+            <Grid container>
+              <Grid item lg={12}>
+                <Dashboard />
+              </Grid>
+              <Grid item md={12} lg={8}>
+                <h1>Content</h1>
+              </Grid>
+              <Grid item md={12} lg={4}>
+                <h1>Calendar</h1>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={8} md={9} lg={10}>
-          <Dashboard />
-        </Grid>
-      </Grid>
+      </Box>
     </ThemeProvider>
   );
 }

@@ -1,21 +1,25 @@
 import React from "react";
 import { createTheme } from '@mui/material/styles';
+import { purple } from "@mui/material/colors";
 
-const customTheme = createTheme({
+
+const purpleTheme = createTheme({
   palette: {
-    primary: {
-      light: '#42e578',
-      main: '#04b338',
-      dark: '#033e15',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
+      primary: {
+          main: purple[500],
+          contrastText: '#FFFFFF'
+      },
+      secondary: {
+          main: purple["A400"]
+      },
+      background: {
+          default: purple[50],
+      },
   },
-});
+  typography: {
+      fontFamily: 'Quicksand',
+      fontSize: 14
+  },
+})
 
-export default customTheme
+export default purpleTheme
