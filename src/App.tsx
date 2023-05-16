@@ -4,7 +4,7 @@ import {
   ThemeProvider,
   Box
 } from '@mui/material';
-import purpleTheme from './themes/theme';
+import { purpleTheme, blueTheme, blackTheme, orangeTheme } from './themes/theme';
 import Sidebar from './modules/sidebar';
 import Dashboard from './modules/dashboard';
 import { Routes, Route } from 'react-router-dom';
