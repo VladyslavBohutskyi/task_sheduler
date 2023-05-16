@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   ThemeProvider,
   Box
 } from '@mui/material';
-import { purpleTheme, blueTheme, blackTheme, orangeTheme } from './themes/theme';
+import { purpleTheme, blueTheme, blackTheme, orangeTheme } from './themes';
 import Sidebar from './modules/sidebar';
 import Dashboard from './modules/dashboard';
 import { Routes, Route } from 'react-router-dom';
@@ -14,8 +14,12 @@ import Notes from './modules/notes';
 
 
 function App() {
+
+const [curentTheme, setCurentTheme] = useState(purpleTheme)
+console.log(curentTheme.palette.primary.light);
+
   return (
-    <ThemeProvider theme={purpleTheme}>
+    <ThemeProvider theme={curentTheme}>
       <Box
         p={'3%'}
         minHeight={'100vh'}
@@ -36,7 +40,7 @@ function App() {
             pt={4}
             bgcolor={'primary.main'}
           >
-            <Sidebar />
+            <Sidebar light={curentTheme.palette.primary.light}/>
           </Grid>
           <Grid item xs={12} sm={8} md={9} lg={10}
             p={5}
@@ -51,7 +55,7 @@ function App() {
               <Grid item md={12} lg={8}>
                 <Routes>
                   <Route path='/' element={<Todo/>}/>
-                  <Route path='/themes' element={<Themes />}/>
+                  <Route path='/themes' element={<Themes setTheme={setCurentTheme}/>}/>
                   <Route path='/notes' element={<Notes />}/>
                 </Routes>
               </Grid>

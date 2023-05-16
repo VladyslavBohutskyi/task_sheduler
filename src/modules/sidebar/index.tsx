@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { purpleTheme, blueTheme, blackTheme, orangeTheme } from '../../themes';
 
 const data = [
   {
@@ -27,7 +28,11 @@ const data = [
   }
 ];
 
-const Sidebar = () => {
+interface circleColor {
+  light: string,
+}
+
+const Sidebar = ({ light }:circleColor) => {
   return (
     <Box>
       <Box
@@ -36,7 +41,7 @@ const Sidebar = () => {
         borderRadius={50}
         mb={4}
         sx={{
-          background: 'linear-gradient(90deg, rgba(255,255,255,1) 50%, #6d0c7e 50%)'
+          background: `linear-gradient(90deg, rgba(255,255,255,1) 50%, ${light} 50%)`
         }}
       >
       </Box>
