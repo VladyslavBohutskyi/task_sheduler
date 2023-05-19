@@ -3,7 +3,6 @@ import { purpleTheme, blueTheme, blackTheme, orangeTheme } from '../../themes';
 import ThemeStore from "../../store/theme";
 
 
-
 const data = [
   {
     name: 'Purple Theme',
@@ -23,13 +22,13 @@ const data = [
   },
 ]
 
-interface SetThemes {
-  setTheme: Function,
-  // width?: number // ? not necessarily
-}
+// interface SetThemes {
+//   setTheme: Function,
+//   // width?: number // ? not necessarily
+// }
 
 
-const Themes = ({ setTheme }: SetThemes) => {
+const Themes = () => {
   return (
     <>
       {
@@ -61,7 +60,7 @@ const Themes = ({ setTheme }: SetThemes) => {
                 width: 150,
                 height: 50,
               }}
-              onClick={() => setTheme(item.theme)}
+              onClick={() => ThemeStore.setActiveTheme(item.theme)}
             >
               {item.name}
             </Button>
@@ -73,47 +72,3 @@ const Themes = ({ setTheme }: SetThemes) => {
 }
 
 export default Themes
-{/* <Box
-  display={'block'}
-  mb={3}
->
-  <Button
-    sx={{
-      backgroundColor: blueTheme.palette.primary.main,
-      "&:hover": {
-        backgroundColor: blueTheme.palette.background.default
-      },
-    }}
-    variant='contained'>blue Theme
-  </Button>
-</Box>
-
-<Box
-  display={'block'}
-  mb={3}
->
-  <Button
-    sx={{
-      backgroundColor: blackTheme.palette.primary.main,
-      "&:hover": {
-        backgroundColor: blackTheme.palette.background.default
-      },
-    }}
-    variant='contained'>black Theme
-  </Button>
-</Box>
-
-<Box
-  display={'block'}
-  mb={3}
->
-  <Button
-    sx={{
-      backgroundColor: orangeTheme.palette.primary.main,
-      "&:hover": {
-        backgroundColor: orangeTheme.palette.secondary.main
-      },
-    }}
-    variant='contained'>orange Theme
-  </Button>
-</Box> */}

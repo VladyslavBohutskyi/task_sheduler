@@ -6,7 +6,7 @@ class ThemeStore {
     makeAutoObservable(this)
   }
 
-  activeTheme: any = orangeTheme
+  activeTheme: any = blackTheme
   setActiveTheme(theme: any){
     this.activeTheme = theme
   }
