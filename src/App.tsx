@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, ThemeProvider, Box } from '@mui/material';
-import { purpleTheme, blueTheme, blackTheme, orangeTheme } from './themes';
 import Sidebar from './modules/sidebar';
 import Dashboard from './modules/dashboard';
 import { Routes, Route } from 'react-router-dom';
@@ -8,13 +7,12 @@ import Todo from './modules/todo';
 import Themes from './modules/themes';
 import Notes from './modules/notes';
 import { observer } from 'mobx-react';
-import ThemeStore from '../src/store/theme'
+import ThemeStore from './store/theme'
 
 const App = observer(() => {
 
-  // const [curentTheme, setCurentTheme] = useState(purpleTheme)
 
-    return (
+  return (
     <ThemeProvider theme={ThemeStore.activeTheme}>
       <Box
         p={'3%'}
@@ -36,7 +34,7 @@ const App = observer(() => {
             pt={4}
             bgcolor={'primary.main'}
           >
-            <Sidebar light={ThemeStore.activeTheme.palette.primary.light} />
+            <Sidebar />
           </Grid>
           <Grid item xs={12} sm={8} md={9} lg={10}
             p={5}

@@ -22,11 +22,6 @@ const data = [
   },
 ]
 
-// interface SetThemes {
-//   setTheme: Function,
-//   // width?: number // ? not necessarily
-// }
-
 
 const Themes = () => {
   return (
