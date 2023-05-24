@@ -4,8 +4,8 @@ import TodoStore from "../../../store/todo"
 import { observer } from "mobx-react"
 
 
-
 const TaskList = observer(() => {
+  
   return (
     <Box my={2.5} >
       {
