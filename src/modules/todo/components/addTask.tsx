@@ -9,7 +9,8 @@ import TodoStore from "../../../store/todo"
 
 const AddTask = () => {
   const [open, setOpen] = useState(false);
-  const [taskItem, setTaskItem] = useState({ title: '', body: '' })
+  const [taskItem, setTaskItem] = useState({ title: '', body: ''})
+
 
 
 
@@ -46,7 +47,7 @@ const AddTask = () => {
           <Button variant="outlined" onClick={() => {
             TodoStore.addNewTask(taskItem)
             setOpen(false)
-            setTaskItem({ title: '', body: '' })
+            setTaskItem({ title: '', body: ''})
           }}>
             Ok
           </Button>

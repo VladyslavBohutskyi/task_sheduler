@@ -10,7 +10,7 @@ const TaskList = observer(() => {
     <Box my={2.5} >
       {
         TodoStore.todosArray.map((item) => (
-          <TaskItem key={item.title} title={item.title} body={item.body} />
+          <TaskItem key={item.id} title={item.title} body={item.body} id={item.id} status={item.status}/>
         ))
       }
     </Box>
