@@ -8,6 +8,7 @@ import Themes from './modules/themes';
 import Notes from './modules/notes';
 import { observer } from 'mobx-react';
 import ThemeStore from './store/theme'
+import TodoCalendar from './modules/calendar';
 
 const App = observer(() => {
 
@@ -42,7 +43,7 @@ const App = observer(() => {
             bgcolor={'background.default'}
             borderRadius={8}
           >
-            <Grid container>
+            <Grid container spacing={3}>
               <Grid item lg={12}>
                 <Dashboard />
               </Grid>
@@ -54,7 +55,7 @@ const App = observer(() => {
                 </Routes>
               </Grid>
               <Grid item md={12} lg={4}>
-                <h1>Calendar</h1>
+                <TodoCalendar/>
               </Grid>
             </Grid>
           </Grid>

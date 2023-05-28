@@ -1,17 +1,28 @@
 import { Box, Button, ButtonGroup } from "@mui/material"
 import AddTask from "./addTask"
+import { observer } from "mobx-react"
+import TodoStore from "../../../store/todo"
 
-const buttons = [
+const TaskForm = observer(() => {
 
-  <Button key={'all'} variant="contained">ALL</Button>,
-  <Button key={'active'}>ACTIVE</Button>,
-  <Button key={'done'}>DONE</Button>,
+  const buttons = [
+    <Button variant={TodoStore.filterTasks == null ? 'contained' : 'outlined'}
+      key={'all'} onClick={() => { TodoStore.filteredTask(null) }}>
+      ALL
+    </Button>,
 
-]
+    <Button variant={TodoStore.filterTasks == true ? 'contained' : 'outlined'}
+      key={'active'} onClick={() => { TodoStore.filteredTask(true) }}>
+      ACTIVE
+    </Button>,
 
-const TaskForm = () => {
+    <Button variant={TodoStore.filterTasks == false ? 'contained' : 'outlined'}
+      key={'done'} onClick={() => { TodoStore.filteredTask(false) }}>
+      DONE
+    </Button>,
+  ]
+
   return (
-    
     <Box
       display={'flex'}
       justifyContent={'space-between'}
@@ -20,9 +31,9 @@ const TaskForm = () => {
       <ButtonGroup sx={{ height: '40px' }}>
         {buttons}
       </ButtonGroup>
-      <AddTask/>
+      <AddTask />
     </Box>
   )
-}
+})
 
 export default TaskForm

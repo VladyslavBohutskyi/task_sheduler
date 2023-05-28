@@ -9,6 +9,8 @@ class TodoStore {
     makeAutoObservable(this)
   }
 
+  filterTasks: null | boolean = null
+
   todosArray: ITaskItem[] =
     (localStorage.getItem('todo')) == null ? [] : JSON.parse(localStorage.getItem('todo') || '')
 
@@ -36,6 +38,9 @@ class TodoStore {
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
 
+  filteredTask(filter: null | boolean){
+    this.filterTasks = filter  
+  }
 
 }
 

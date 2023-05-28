@@ -5,13 +5,17 @@ import { observer } from "mobx-react"
 
 
 const TaskList = observer(() => {
-  
+
   return (
     <Box my={2.5} >
       {
-        TodoStore.todosArray.map((item) => (
-          <TaskItem key={item.id} title={item.title} body={item.body} id={item.id} status={item.status}/>
-        ))
+        TodoStore.todosArray.map((item) => {
+          if (TodoStore.filterTasks == item.status || TodoStore.filterTasks == null) {
+            return (
+              <TaskItem key={item.id} title={item.title} body={item.body} id={item.id} status={item.status} />
+            )
+          }
+        })
       }
     </Box>
   )

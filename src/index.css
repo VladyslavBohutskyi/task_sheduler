@@ -1,9 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Teko:wght@300;400;500;600;700&display=swap');
-*{
+
+* {
     padding: 0;
     margin: 0;
     font-family: 'Quicksand';
 }
-a{
+
+a {
     text-decoration: none;
+}
+
+.react-calendar {
+    border: none;
+    font-family: 'Quicksand';
+    background: unset;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: black;
+}
+
+.react-calendar__tile--now {
+    background: black !important;
+    color: white;
+    border-radius: 3px;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+    background: #bcbcbc;
+    border-radius: 3px;
+}
+
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 0.75em;
+    margin-bottom: 5px;
+}
+
+.react-calendar__month-view__weekdays abbr[title] {
+    text-decoration: none !important;
+}
+
+.react-calendar button {
+    font-size: 14px;
+}
+
+.react-calendar__tile--active {
+    background: #bcbcbc;
+    color: white;
+    border-radius: 3px;
+}
+
+.react-calendar__navigation {
+    height: 20px;
+}
+
+.react-calendar__tile--now:enabled:hover .react-calendar__tile--now:enabled:focus {
+    background: #3049d0;
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+    display: none !important;
+    font-size: 22px;
+}
+
+.react-calendar__navigation__label__labelText {
+    font-size: 16px;
+}
+
+.react-calendar {
+    width: 100%;
+}
+
+.menu_link.active .MuiButtonBase-root {
+    background-color: #9fa8da;
+    color: white;
+    border-radius: 4px;
+}
+
+body .MuiModal-backdrop {
+    background-color: rgba(43, 44, 64, 0.5);
 }

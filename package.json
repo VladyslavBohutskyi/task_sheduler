@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.2.1",
     "mobx-react": "^7.6.0",
     "react": "^18.2.0",
+    "react-calendar": "^4.2.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
