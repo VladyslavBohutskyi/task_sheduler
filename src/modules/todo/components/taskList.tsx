@@ -10,7 +10,7 @@ const TaskList = observer(() => {
     <Box my={2.5} >
       {
         TodoStore.todosArray.map((item) => {
-          if (TodoStore.filterTasks == item.status || TodoStore.filterTasks == null) {
+          if ((TodoStore.filterTasks == item.status || TodoStore.filterTasks == null) && (TodoStore.currentDate == item.date)) {
             return (
               <TaskItem key={item.id} title={item.title} body={item.body} id={item.id} status={item.status} />
             )

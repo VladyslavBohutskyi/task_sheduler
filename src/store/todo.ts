@@ -1,6 +1,5 @@
 import { makeAutoObservable, toJS } from "mobx"
 import { ITaskItem } from "../modules/todo/models";
-import { log } from "console";
 
 
 
@@ -9,16 +8,23 @@ class TodoStore {
     makeAutoObservable(this)
   }
 
+  currentDate = new Date().toDateString()
+
   filterTasks: null | boolean = null
 
   todosArray: ITaskItem[] =
     (localStorage.getItem('todo')) == null ? [] : JSON.parse(localStorage.getItem('todo') || '')
 
-  addNewTask(taskItem: ITaskItem) {
+  setCurrentDate(date: string){
+    this.currentDate = date
+  }
+
+  addNewTask(taskItem: {title: string, body: string}) {
     const newTask: ITaskItem = {
       ...taskItem,
       status: true,
       id: Date.now(),
+      date: this.currentDate
     }
     this.todosArray = [...this.todosArray, newTask]
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
@@ -38,8 +44,8 @@ class TodoStore {
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
 
-  filteredTask(filter: null | boolean){
-    this.filterTasks = filter  
+  filteredTask(filter: null | boolean) {
+    this.filterTasks = filter
   }
 
 }
