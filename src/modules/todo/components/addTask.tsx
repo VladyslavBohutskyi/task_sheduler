@@ -5,11 +5,11 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import TodoStore from "../../../store/todo"
+import { todostore } from "../../../store/todo"
 
 const AddTask = () => {
   const [open, setOpen] = useState(false);
-  const [taskItem, setTaskItem] = useState({ title: '', body: ''})
+  const [taskItem, setTaskItem] = useState({ title: '', body: '' })
 
 
 
@@ -45,9 +45,9 @@ const AddTask = () => {
             Cancel
           </Button>
           <Button variant="outlined" onClick={() => {
-            TodoStore.addNewTask(taskItem)
+            todostore.addNewTask(taskItem)
             setOpen(false)
-            setTaskItem({ title: '', body: ''})
+            setTaskItem({ title: '', body: '' })
           }}>
             Ok
           </Button>

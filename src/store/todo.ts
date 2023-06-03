@@ -50,4 +50,5 @@ class TodoStore {
 
 }
 
-export default new TodoStore()
+const todostore =  new TodoStore()
+export { todostore }

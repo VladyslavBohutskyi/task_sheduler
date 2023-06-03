@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Typography } from "@mui/material"
 import { Check, Delete } from "@mui/icons-material";
 import { ITaskItem } from "../models";
-import TodoStore from "../../../store/todo"
+import { todostore } from "../../../store/todo"
 
 const TaskItem = ({ title, body, id, status }: ITaskItem) => {
 
@@ -15,14 +15,14 @@ const TaskItem = ({ title, body, id, status }: ITaskItem) => {
         </Typography>
         <Box sx={{ width: '20%', textAlign: 'end' }}>
           <Button
-            onClick={() => TodoStore.changeStatusTask(id)}
+            onClick={() => todostore.changeStatusTask(id)}
             variant={'outlined'}
             sx={{ minWidth: '20px', p: '5px 7px' }}
           >
             {status ? <Check /> : 'Done'}
           </Button>
           <Button
-            onClick={() => TodoStore.deleteTask(id)}
+            onClick={() => todostore.deleteTask(id)}
             variant={'outlined'}
             sx={{ minWidth: '20px', p: '5px 7px', ml: 1 }}>
             <Delete />

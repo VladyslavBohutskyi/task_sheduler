@@ -1,5 +1,5 @@
 import { Avatar, Typography, Box } from "@mui/material";
-import TodoStore from '../../store/todo'
+import { todostore } from '../../store/todo'
 import { observer } from "mobx-react";
 
 const Dashboard = observer(() => {
@@ -20,7 +20,7 @@ const Dashboard = observer(() => {
         color={"secondary.main"}
         fontWeight={500}
       >
-        {TodoStore.currentDate}
+        {todostore.currentDate}
       </Typography>
 
       <Box

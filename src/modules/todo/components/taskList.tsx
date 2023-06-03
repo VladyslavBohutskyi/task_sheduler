@@ -1,7 +1,8 @@
 import { Box } from "@mui/material"
 import TaskItem from "./taskItem"
-import TodoStore from "../../../store/todo"
+import { todostore } from "../../../store/todo"
 import { observer } from "mobx-react"
+import { ITaskItem } from "../models"
 
 
 const TaskList = observer(() => {
@@ -9,8 +10,8 @@ const TaskList = observer(() => {
   return (
     <Box my={2.5} >
       {
-        TodoStore.todosArray.map((item) => {
-          if ((TodoStore.filterTasks == item.status || TodoStore.filterTasks == null) && (TodoStore.currentDate == item.date)) {
+        todostore.todosArray.map((item: ITaskItem) => {
+          if ((todostore.filterTasks == item.status || todostore.filterTasks == null) && (todostore.currentDate == item.date)) {
             return (
               <TaskItem key={item.id} title={item.title} body={item.body} id={item.id} status={item.status} />
             )

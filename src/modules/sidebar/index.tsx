@@ -1,6 +1,5 @@
 import { Dns, People, PermMedia, TextSnippetRounded } from "@mui/icons-material";
 import { Box } from "@mui/system";
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import ThemeStore from '../../store/theme'
@@ -14,7 +13,7 @@ const data = [
   {
     icon: <People />,
     label: 'My Profile',
-    path: '/',
+    path: '/profile',
   },
   {
     icon: <PermMedia />,
