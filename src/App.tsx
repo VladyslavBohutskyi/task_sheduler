@@ -9,6 +9,8 @@ import { observer } from 'mobx-react';
 import ThemeStore from './store/theme'
 import TodoCalendar from './modules/calendar';
 import Profile from './modules/profile';
+import Note from './modules/notes/note';
+import NoteDetails from './modules/notes/note-details';
 
 const App = observer(() => {
 
@@ -52,11 +54,17 @@ const App = observer(() => {
                   <Route path='/' element={<Todo />} />
                   <Route path='/profile' element={<Profile />} />
                   <Route path='/themes' element={<Themes />} />
-                  <Route path='/notes' element={<Notes />} />
+                  <Route path='/notes'>
+                    <Route index element={<Notes />} />
+                    <Route path=':noteCategory'> 
+                      <Route index element={<Note />} />
+                      <Route path=':noteDetails' element={<NoteDetails/>}/>
+                    </Route>
+                  </Route>
                 </Routes>
               </Grid>
               <Grid item md={12} lg={4}>
-                <TodoCalendar/>
+                <TodoCalendar />
               </Grid>
             </Grid>
           </Grid>

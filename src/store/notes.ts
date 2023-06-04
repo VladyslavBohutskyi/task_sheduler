@@ -10,24 +10,28 @@ class NoteStore {
 
   notesArray: ICategory[] = [
     {
+      categoryUrl: 'game',
       name: 'Game',
       color: purple[400],
     },
     {
+      categoryUrl: 'my-movie',
       name: 'Movie',
       color: '#8345F7',
     },
     {
+      categoryUrl: 'work',
       name: 'Work',
       color: '#413BD4',
     },
     {
+      categoryUrl: 'food',
       name: 'Food',
       color: '#0BCDD7',
-    }
+    },
   ]
 
 }
 
-const noteStore = new NoteStore()
-export { noteStore }
+const notesStore = new NoteStore()
+export { notesStore }

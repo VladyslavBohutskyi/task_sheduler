@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 import { observer } from "mobx-react";
-import { noteStore } from "../../store/notes";
+import { notesStore } from "../../store/notes";
 import { Paper } from "@mui/material";
 import { ICategory } from "./models";
 import { useId } from "react";
@@ -13,9 +13,8 @@ const Notes = observer(() => {
   return (
     <Box display={'flex'} flexWrap={'wrap'} m={'-5px'}>
       {
-        noteStore.notesArray.map((e: ICategory) => {
-          return (
-            <Paper key={testId}
+        notesStore.notesArray.map((e: ICategory) => ( 
+            <Paper key={useId()}
               sx={{
                 flexBasis: 'calc(33% - 10px)',
                 position: 'relative',
@@ -24,11 +23,10 @@ const Notes = observer(() => {
                 flexGrow: '1',
                 cursor: 'pointer',
                 borderRadius: '10px',
-                
               }}
             >
               <NavLink
-                to={`./${e.name.toLowerCase()}`}
+                to={`./${e.categoryUrl}`}
                 style={{
                   position: 'absolute',
                   width: '100%',
@@ -36,11 +34,10 @@ const Notes = observer(() => {
                   padding: '30px',
                 }}
               >
-                <CategoryNotes name={e.name} color={e.color} />
+                <CategoryNotes  name={e.name} color={e.color} />
               </NavLink>
             </Paper>
-          )
-        })
+        ))
       }
     </Box>
   )
