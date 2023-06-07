@@ -3,6 +3,7 @@ import { toJS } from "mobx"
 import { ICategory } from "../modules/notes/models"
 import { purple } from "@mui/material/colors"
 
+
 class NoteStore {
   constructor() {
     makeAutoObservable(this)
@@ -10,24 +11,28 @@ class NoteStore {
 
   notesArray: ICategory[] = [
     {
+      icon: 3,
       categoryUrl: 'game',
       name: 'Game',
-      color: purple[400],
+      color: 0,
     },
     {
+      icon: 6,
       categoryUrl: 'my-movie',
       name: 'Movie',
-      color: '#8345F7',
+      color: 1,
     },
     {
+      icon: 2,
       categoryUrl: 'work',
       name: 'Work',
-      color: '#413BD4',
+      color: 3,
     },
     {
+      icon: 1,
       categoryUrl: 'food',
       name: 'Food',
-      color: '#0BCDD7',
+      color: 4,
     },
   ]
 

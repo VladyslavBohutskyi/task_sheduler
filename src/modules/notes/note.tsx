@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { notesStore } from "../../store/notes";
 import { Box, Paper, Typography } from "@mui/material";
+import Colors from "./components/colors";
 
 const Note = () => {
   const { noteCategory } = useParams()
@@ -8,16 +9,14 @@ const Note = () => {
   const curentCategory = notesStore.notesArray[categoryIndex]
 
   return (
-    <>
       <Paper variant={'outlined'} square={true}
         sx={{ p: '22px', borderRadius: '10px', boxShadow: `4px 4xp 14px -10px ${curentCategory.color}` }} >
         <Box display={'flex'} alignItems={'center'} mb={2}>
-          <Typography color={curentCategory.color} variant={'h5'} textTransform={'uppercase'} fontWeight={'600'}>
+          <Typography color={Colors[curentCategory.color]} variant={'h5'} textTransform={'uppercase'} fontWeight={'600'}>
             {curentCategory.name}
           </Typography>
         </Box>
       </Paper>
-    </>
   )
 }
 
