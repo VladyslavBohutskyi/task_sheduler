@@ -12,7 +12,7 @@ const Note = () => {
       <Paper variant={'outlined'} square={true}
         sx={{ p: '22px', borderRadius: '10px', boxShadow: `4px 4xp 14px -10px ${curentCategory.color}` }} >
         <Box display={'flex'} alignItems={'center'} mb={2}>
-          <Typography color={Colors[curentCategory.color]} variant={'h5'} textTransform={'uppercase'} fontWeight={'600'}>
+          <Typography color={curentCategory.color} variant={'h5'} textTransform={'uppercase'} fontWeight={'600'}>
             {curentCategory.name}
           </Typography>
         </Box>

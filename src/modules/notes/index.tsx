@@ -16,7 +16,7 @@ const Notes = observer(() => {
       <Box display={'flex'} flexWrap={'wrap'} m={'-5px'}>
         {
           notesStore.notesArray.map((e: ICategory) => (
-            <Paper key={useId()}
+            <Paper key={e.categoryUrl}
               sx={{ flexBasis: 'calc(33% - 10px)', position: 'relative', minHeight: '205px', m: '5px', flexGrow: '1', cursor: 'pointer', borderRadius: '10px', }}
             >
               <NavLink

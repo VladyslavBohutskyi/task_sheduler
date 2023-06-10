@@ -14,28 +14,31 @@ class NoteStore {
       icon: 3,
       categoryUrl: 'game',
       name: 'Game',
-      color: 0,
+      color: '#80A3FF',
     },
     {
       icon: 6,
       categoryUrl: 'my-movie',
-      name: 'Movie',
-      color: 1,
+      name: '#FDBE7E',
+      color: '#F9A090',
     },
     {
       icon: 2,
       categoryUrl: 'work',
       name: 'Work',
-      color: 3,
+      color: '#A59FDB',
     },
     {
       icon: 1,
       categoryUrl: 'food',
       name: 'Food',
-      color: 4,
+      color: '#A59FDB',
     },
   ]
 
+  addNote(note: ICategory){
+    this.notesArray = [...this.notesArray, note]
+  }
 }
 
 const notesStore = new NoteStore()
