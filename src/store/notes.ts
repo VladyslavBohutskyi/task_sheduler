@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx"
 import { toJS } from "mobx"
-import { ICategory } from "../modules/notes/models"
-import { purple } from "@mui/material/colors"
+import { ICategory, INote } from "../modules/notes/models"
 
 
 class NoteStore {
@@ -9,35 +8,18 @@ class NoteStore {
     makeAutoObservable(this)
   }
 
-  notesArray: ICategory[] = [
-    {
-      icon: 3,
-      categoryUrl: 'game',
-      name: 'Game',
-      color: '#80A3FF',
-    },
-    {
-      icon: 6,
-      categoryUrl: 'my-movie',
-      name: '#FDBE7E',
-      color: '#F9A090',
-    },
-    {
-      icon: 2,
-      categoryUrl: 'work',
-      name: 'Work',
-      color: '#A59FDB',
-    },
-    {
-      icon: 1,
-      categoryUrl: 'food',
-      name: 'Food',
-      color: '#A59FDB',
-    },
-  ]
+  notesArray: ICategory[] =
+    JSON.parse(localStorage.getItem('notes') ?? `[]`)
 
-  addNote(note: ICategory){
+
+  addNoteCategory(note: ICategory) {
     this.notesArray = [...this.notesArray, note]
+    localStorage.setItem('notes', JSON.stringify(this.notesArray))
+  }
+
+  addNote(newNote: INote){
+    console.log(newNote);
+    
   }
 }
 

@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
 import { notesStore } from "../../store/notes";
 import { Box, Paper, Typography } from "@mui/material";
-import Colors from "./components/colors";
+import AddNote from "./components/add-note";
+
+
 
 const Note = () => {
   const { noteCategory } = useParams()
@@ -16,6 +18,9 @@ const Note = () => {
             {curentCategory.name}
           </Typography>
         </Box>
+
+        <AddNote />
+
       </Paper>
   )
 }

@@ -2,11 +2,10 @@ import { Add } from "@mui/icons-material"
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Fab, Menu, MenuItem, Stack, SvgIcon, TextField, } from "@mui/material"
 import { useState } from "react"
 import PopupState, { bindTrigger, bindPopover, bindMenu } from 'material-ui-popup-state';
-import Popover from '@mui/material/Popover';
 import Colors from "./colors";
 import IconsArray from "./icons";
 import { notesStore } from "../../../store/notes";
-import useId from "@mui/material/utils/useId";
+
 
 
 const AddCategory = () => {
@@ -19,13 +18,14 @@ const AddCategory = () => {
 
   function addNewCategory() {
     setOpen(false)
-    const curUrl = category.replace(' ', '-')
-    notesStore.addNote(
+    const curUrl = category.trim().replace(' ', '-')
+    notesStore.addNoteCategory(
       {
         icon: categoryIconIndex,
-        categoryUrl: curUrl,
-        name: category,
+        categoryUrl: curUrl.toLowerCase(),
+        name: category.trim(),
         color: colorIcon,
+        notes: []
       },
     )
   }
@@ -35,9 +35,8 @@ const AddCategory = () => {
     <>
       <Box
         display={'flex'} justifyContent={'flex-end'} mt={2}
-        onClick={() => setOpen(true)}
       >
-        <Fab color="primary" aria-label='add'>
+        <Fab color="primary" aria-label='add' onClick={() => setOpen(true)}>
           <Add />
         </Fab>
       </Box>
@@ -125,7 +124,8 @@ const AddCategory = () => {
           </Stack>
           <Button variant="outlined" onClick={() => {
             addNewCategory()
-          }}>
+          }}
+          >
             Add
           </Button>
         </DialogActions>
