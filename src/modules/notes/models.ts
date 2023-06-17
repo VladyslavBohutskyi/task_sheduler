@@ -1,5 +1,6 @@
 export interface INote {
   parent: string,
+  noteUrl: string,
   title: string,
   body: string,
   date: string,

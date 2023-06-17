@@ -12,7 +12,6 @@ const CategoryNotes = ({ name, color, icon, notes }: ICategory) => {
       <Typography color={color} variant={'h5'} textTransform={'uppercase'} fontWeight={'600'}>
         {name}
       </Typography>
-
     </>
   )
 }

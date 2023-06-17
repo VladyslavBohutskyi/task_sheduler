@@ -11,17 +11,19 @@ const AddNote = () => {
   const [open, setOpen] = useState(false)
   const [note, setNote] = useState('')
 
+  
   function addNewNote() {
     setOpen(false)
+    const noteUrl = note.trim().replaceAll(' ', '-').toLowerCase()
     const newNote: INote = {
       parent: noteCategory || '',
+      noteUrl: noteUrl,
       title: note,
       body: '',
       date: new Date().toLocaleString()
     }
     notesStore.addNote(newNote)
   }
-
 
   return (
     <>

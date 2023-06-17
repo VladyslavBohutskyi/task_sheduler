@@ -8,18 +8,19 @@ class NoteStore {
     makeAutoObservable(this)
   }
 
+
   notesArray: ICategory[] =
     JSON.parse(localStorage.getItem('notes') ?? `[]`)
 
 
   addNoteCategory(note: ICategory) {
-    this.notesArray = [...this.notesArray, note]
+    this.notesArray.push(note)
     localStorage.setItem('notes', JSON.stringify(this.notesArray))
   }
 
-  addNote(newNote: INote){
-    console.log(newNote);
-    
+  addNote(newNote: INote) {
+    this.notesArray.map((e) => e.categoryUrl === newNote.parent ? e.notes.push(newNote) : false)
+    localStorage.setItem('notes', JSON.stringify(this.notesArray))
   }
 }
 
