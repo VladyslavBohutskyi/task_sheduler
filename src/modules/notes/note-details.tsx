@@ -5,16 +5,14 @@ import { toJS } from "mobx"
 import IconsArray from "./components/icons";
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import CategoryNotes from "./components/category";
+import NoteBody from "./components/note-body";
 
 const NoteDetails = () => {
   const { noteCategory, noteDetails } = useParams()
 
-  // console.log(noteCategory, noteDetails);
-  // console.log(toJS(notesStore.notesArray));
   const category = toJS(notesStore.notesArray).filter((e) => (e.categoryUrl === noteCategory))[0]
   const note = category.notes.filter((e) => (e.noteUrl === noteDetails))[0]
   const indexNote = category.notes.findIndex((e) => (e.noteUrl === noteDetails))
-
 
   return (
     <Paper variant={'outlined'} square
@@ -28,17 +26,22 @@ const NoteDetails = () => {
           {category.name}
         </Typography>
       </Box >
+
       <Box my={2} sx={{ p: 1, pl: 0, mb: 1, borderRadius: '6px' }}>
         <Typography variant={'h5'}>
           {note.title}
         </Typography>
+
+        <NoteBody color={category.color} body={note.body}/>
       </Box>
+
+
       <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} mb={1} mt={3}>
         {
           category.notes[indexNote - 1]
             ?
             <NavLink to={`../${category.notes[indexNote - 1].noteUrl}`}>
-              <Typography display={'flex'} alignItems={'center'} fontWeight={'600'}>
+              <Typography color={category.color} display={'flex'} alignItems={'center'} fontWeight={'600'}>
                 <ChevronLeft /> Prev Note
               </Typography >
             </NavLink>
@@ -51,7 +54,7 @@ const NoteDetails = () => {
           category.notes[indexNote + 1]
             ?
             <NavLink to={`../${category.notes[indexNote + 1].noteUrl}`}>
-              <Typography display={'flex'} alignItems={'center'} fontWeight={'600'}>
+              <Typography color={category.color} display={'flex'} alignItems={'center'} fontWeight={'600'}>
                 Next Note <ChevronRight />
               </Typography >
             </NavLink>
