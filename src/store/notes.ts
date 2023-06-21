@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx"
 import { toJS } from "mobx"
-import { ICategory, INote } from "../modules/notes/models"
+import { IBody, ICategory, INote } from "../modules/notes/models"
 
 
 class NoteStore {
@@ -20,6 +20,20 @@ class NoteStore {
 
   addNote(newNote: INote) {
     this.notesArray.map((e) => e.categoryUrl === newNote.parent ? e.notes.push(newNote) : false)
+    localStorage.setItem('notes', JSON.stringify(this.notesArray))
+  }
+
+  saveNote({ category, name, body }: IBody) {
+    this.notesArray.map(
+      ((categoryNote) => categoryNote.categoryUrl === category
+        ?
+        categoryNote.notes.map((note) => note.noteUrl === name
+          ?
+          note.body = body
+          :
+          false)
+        :
+        false))
     localStorage.setItem('notes', JSON.stringify(this.notesArray))
   }
 }

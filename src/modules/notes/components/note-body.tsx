@@ -1,14 +1,16 @@
 import { Box, SvgIcon, Typography } from "@mui/material"
 import { useState } from "react"
 import { IBody } from "../models"
-import { Edit, Save } from '@mui/icons-material';
+import { Category, Edit, Save } from '@mui/icons-material';
 import MDEditor from "@uiw/react-md-editor";
+import { notesStore } from "../../../store/notes";
 
 
 
-const NoteBody = ({color, body}: IBody) => {
+const NoteBody = ({ color, body: initBody, category, name }: IBody) => {
   const [edit, setEdit] = useState(true)
-  const [value, setValue] = useState(()=> body)
+  const [body, setBody] = useState(() => initBody)
+console.log(initBody);
 
 
   return (
@@ -18,7 +20,7 @@ const NoteBody = ({color, body}: IBody) => {
         {
           edit
             ?
-            <Box onClick={() => { setEdit(!edit) }}
+            <Box onClick={() => (setEdit(!edit))}
               display={'flex'} alignItems={'center'} mb={2} sx={{ cursor: 'pointer' }}>
               <SvgIcon sx={{ color: color, fontSize: '20px', mr: 0.2 }}>
                 <Edit />
@@ -28,7 +30,7 @@ const NoteBody = ({color, body}: IBody) => {
               </Typography>
             </Box>
             :
-            <Box onClick={() => { setEdit(!edit) }}
+            <Box onClick={() => (notesStore.saveNote({ category, name, body }), setEdit(!edit))}
               display={'flex'} alignItems={'center'} mb={2} ml={2} sx={{ cursor: 'pointer' }} >
               <SvgIcon sx={{ color: color, fontSize: '20px', mr: 0.2 }}>
                 <Save />
@@ -40,11 +42,11 @@ const NoteBody = ({color, body}: IBody) => {
         }
       </Box>
       {
-        edit 
-        ?
-        <MDEditor.Markdown source={value}/>
-        :
-        <MDEditor value={value} onChange={(val)=>{setValue(val!)}}/>
+        edit
+          ?
+          <MDEditor.Markdown source={body} />
+          :
+          <MDEditor value={body} onChange={(val) => { setBody(val!) }} />
       }
 
     </>

@@ -3,7 +3,7 @@ import { ICategory } from "../models"
 import IconsArray from "./icons"
 
 
-const CategoryNotes = ({ name, color, icon, notes }: ICategory) => {
+const CategoryNotes = ({ name, color, icon, notes, categoryUrl }: ICategory) => {
   return (
     <>
       <SvgIcon sx={{color: color, fontSize: '45px', mb: 3, }}>

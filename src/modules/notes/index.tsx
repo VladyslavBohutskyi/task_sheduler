@@ -23,7 +23,7 @@ const Notes = observer(() => {
                 to={`./${e.categoryUrl}`}
                 style={{ position: 'absolute', width: '100%', height: '100%', padding: '30px' }}
               >
-                <CategoryNotes name={e.name} color={e.color} icon={e.icon} notes={e.notes} />
+                <CategoryNotes name={e.name} color={e.color} icon={e.icon} notes={e.notes} categoryUrl={e.categoryUrl}/>
               </NavLink>
             </Paper>
           ))
