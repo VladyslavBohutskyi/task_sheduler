@@ -6,13 +6,15 @@ import IconsArray from "./components/icons";
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import CategoryNotes from "./components/category";
 import NoteBody from "./components/note-body";
+import { useEffect } from "react";
 
 const NoteDetails = () => {
-  const { noteCategory, noteDetails } = useParams()
 
+  const { noteCategory, noteDetails } = useParams()
   const category = toJS(notesStore.notesArray).filter((e) => (e.categoryUrl === noteCategory))[0]
   const note = category.notes.filter((e) => (e.noteUrl === noteDetails))[0]
   const indexNote = category.notes.findIndex((e) => (e.noteUrl === noteDetails))
+  
 
   return (
     <Paper variant={'outlined'} square

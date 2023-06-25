@@ -1,5 +1,5 @@
 import { Box, SvgIcon, Typography } from "@mui/material"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { IBody } from "../models"
 import { Category, Edit, Save } from '@mui/icons-material';
 import MDEditor from "@uiw/react-md-editor";
@@ -9,8 +9,8 @@ import { notesStore } from "../../../store/notes";
 
 const NoteBody = ({ color, body: initBody, category, name }: IBody) => {
   const [edit, setEdit] = useState(true)
-  const [body, setBody] = useState(() => initBody)
-console.log(initBody);
+  const [body, setValue] = useState(() => initBody)
+  useEffect(() => (setValue(initBody)), [initBody])
 
 
   return (
@@ -46,7 +46,7 @@ console.log(initBody);
           ?
           <MDEditor.Markdown source={body} />
           :
-          <MDEditor value={body} onChange={(val) => { setBody(val!) }} />
+          <MDEditor value={body} onChange={(val) => { setValue(val!) }} />
       }
 
     </>
